@@ -1,4 +1,4 @@
-INCLUDE place_in_room.ink
+INCLUDE place_in_room_tunnel.ink
 
 VAR room1 = ""
 VAR room2 = ""
@@ -8,16 +8,23 @@ VAR room5 = ""
 VAR room6 = "maintenance"
 
 
-9pm M__  Motel
+INT. M__  MOTEL -- 9PM
 
-\- Some banter with Previous clerk -
-\- Family comes in for the night -
+The previous shift's desk clerk informed me that the maintenance guy is in room 6.
 
-Place Family
--> place_in_room("family", -> family_placed)
-== family_placed
+A family came in and needed a room. I placed them in
+-> place_in_room_tunnel("family") ->
 
-// continue here
-The {room1} was placed 
+A Police officer walked in and approached the desk.
 
+"There have been several murders in the area," he said.
+
+He then proceeded to hit on me...
+
+*   [Excuse me...!?]
+    "I'm going to have to ask to leave, sir," I blurted.
+*   (treated_police_with_tact) "Thank you, but[...] I'm not interested, sir."
+-
+
+{treated_police_with_tact}
 -> END
