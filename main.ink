@@ -200,10 +200,10 @@ Well he still doesn't have a place to live. So right now the owner is letting hi
 "...Anyways."
 
 // TODO: come up with scenario for player to use tact with police officer
-
+(editor's note: come up with scenario for player to use tact with police officer)
 *   Treat {p_name} without tact
     "I'm going to have to ask to leave, sir," I blurted.
 *   (treated_police_with_tact) Treat {p_name} with tact
-
 -
+
 -> END
