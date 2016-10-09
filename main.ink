@@ -1,5 +1,9 @@
 INCLUDE tunnels/place_in_room.ink
 INCLUDE functions/get_room.ink
+INCLUDE tunnels/receive_police_code_word.ink
+INCLUDE tunnels/do_not_recieve_police_code_word.ink
+
+
 
 
 VAR 1_name = "Tracy"
@@ -7,7 +11,7 @@ VAR 2_name = "Erica"
 VAR m_name = "Pete"
 VAR p_name = "Ricky"
 VAR p_name_suggested = "Rick"
-VAR p_name_suggested_capitalized = "RICK"
+VAR p_name_suggested_all_caps = "RICK"
 
 VAR room_1 = ""
 VAR room_2 = ""
@@ -24,7 +28,7 @@ INT. MOONVIEW MOTEL
 
 (Raining)
 (Bell Rings) ({1_name} walks in)
-(Girl roughly 1's age, different hair color is working the counter)
+(Girl roughly {1_name}'s age, different hair color is working the counter)
 
 "Hey {1_name}!"
 *   "Heyyyyyyy!"
@@ -176,13 +180,13 @@ Well he still doesn't have a place to live. So right now the owner is letting hi
 
 "That's pretty bad."
 
-*   "That's relatively normal!["] I've encountered so many strange things. I just asked the new maintenance guy to call and check on me if he can't sleep. 
+*   "That's relatively normal!["] I've encountered so many strange things. I just asked the new maintenance guy to call and check on me if he can't sleep.
 
 (writer's note: plot hole – must omit later part)
 
 "Good."
 
-*   "Yep![] So how can I help you, {p_name_suggested_capitalized}!?
+*   "Yep![] So how can I help you, {p_name_suggested_all_caps}!?
 -
 
 
@@ -201,9 +205,50 @@ Well he still doesn't have a place to live. So right now the owner is letting hi
 
 // TODO: come up with scenario for player to use tact with police officer
 (editor's note: come up with scenario for player to use tact with police officer)
-*   Treat {p_name} without tact
-    "I'm going to have to ask to leave, sir," I blurted.
-*   (treated_police_with_tact) Treat {p_name} with tact
+*   [Treat {p_name} without tact] You treated him without tact.
+*   (treated_police_with_tact) [Treat {p_name} with tact] You treated him with tact.
 -
+
+*   "Was there something else you wanted to tell me?"
+-
+
+"Ohhh. Yes. Of course. Now, please don't panic. It probably sounds worse than it is."
+
+*   "...Ok..."
+-
+
+
+"hwoo. Very early this morning, there were a series of break-ins that were no doubt related."
+
+*   "How do you know they were related?"
+-
+
+
+"Well... In each case, the residents were fatally beaten. We have no motive. We have no weapon. All we have are five victims across two homes and one motel room.
+
+*   "Oh my..."
+-
+
+"Yeah. Not good."
+
+*   "Why haven't I heard about this?"
+    "While they happened somewhere between 3 – 4:30 AM, we didn't catch wind until around 9. One of the victims'	boss called us after his no-show."
+*   "Why are you telling me this?"
+    "I didn't want to scare you, believe me! But I thought you should know because... well... (looks down at his shoes) each break-in occurred within a mile of this motel."
+-
+
+*   "Yikes..."
+-
+
+{
+    - treated_police_with_tact:
+        -> receive_police_code_word ->
+    - else:
+        -> do_not_recieve_police_code_word ->
+}
+
+// Chapter 3
+
+10:30PM
 
 -> END
