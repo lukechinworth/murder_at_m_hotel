@@ -6,12 +6,15 @@ INCLUDE tunnels/do_not_recieve_police_code_word.ink
 
 
 
-VAR 1_name = "Tracy"
-VAR 2_name = "Erica"
-VAR m_name = "Pete"
-VAR p_name = "Ricky"
-VAR p_name_suggested = "Rick"
-VAR p_name_suggested_all_caps = "RICK"
+CONST 1_name = "Tracy"
+CONST 2_name = "Erica"
+CONST m_name = "Pete"
+CONST p_name = "Ricky"
+CONST p_name_suggested = "Rick"
+CONST p_name_suggested_all_caps = "RICK"
+CONST d_name = "Charlie"
+CONST d_name_full = "Charlie Chaplin"
+CONST d_name_nick = "Lester the Lion Charlie"
 
 VAR room_1 = ""
 VAR room_2 = ""
@@ -250,5 +253,69 @@ Well he still doesn't have a place to live. So right now the owner is letting hi
 // Chapter 3
 
 10:30PM
+
+(bell rings. {p_name} walks in)
+
+*   "Couldn't stay away, huh?"
+-
+
+"I wish I could have. Looks like I'll be needing a room for the night."
+
+*   "Don't you have to work?"
+-
+
+"The room isn't for me."
+
+*   "Oh..."
+-
+
+"As soon as I left here, I got a call from dispatch. A disturbance at the pub down the highway. Pretty routine, I thought."
+
+*   "What happened?"
+-
+
+"Well, the issue had calmed down by the time I got there. The individual who caused the ruckus was lying face down on the ground beside the bar, possibly passed out."
+
+*   "Is that so out of the ordinary?"
+-
+
+"No, that was normal. But when I turned him over, I was looking into the scared eyes of {d_name_full}." 
+
+*   "No..."
+-
+
+"I'm afraid so."
+
+*   "{d_name_nick}?"
+-
+
+"Mm-hmm. Our beloved mascot. The same {d_name} that did back hand springs while you marched and I kept the bench warm."
+
+*   "Oh dear..."
+-
+
+"Pretty sad. {d_name} had it rough after high school."
+
+*   "Yeah."
+-
+
+"Anyways, it's been about a year since I remember him doing anything like this. Can I put him up for the night? He's still a little drunk but he'll be okay. I don't want him to wake up in a jail cell."
+
+*   "That's nice of you.["] Sure, I'll get him a room."
+-
+
+"Thank you. If he pukes on the carpet or does any other damage, send me the bill."
+
+*   "Sure. Thanks."
+-
+
+-> place_in_room("drunk") ->
+
+*   "Here's the key."
+-
+
+"Thank you. I'll be back."
+
+({p_name} leaves)
 
 -> END
