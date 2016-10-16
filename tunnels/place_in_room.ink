@@ -9,4 +9,4 @@
     ~ room_4 = placee
 *   [Room 5]
     ~ room_5 = placee
-- ->-> // gather back and return to where tunnel was called
+- ->->

@@ -1,10 +1,11 @@
 INCLUDE tunnels/place_in_room.ink
 INCLUDE functions/get_room.ink
 INCLUDE tunnels/receive_police_code_word.ink
-INCLUDE tunnels/do_not_recieve_police_code_word.ink
-
-
-
+INCLUDE tunnels/do_not_receive_police_code_word.ink
+INCLUDE tunnels/answer_phone_while_talking_to_grieving_mother.ink
+INCLUDE tunnels/receive_police_phone_number.ink
+INCLUDE tunnels/police_interrupts_grieving_mother.ink
+INCLUDE tunnels/grieving_mother_describes_son.ink
 
 CONST 1_name = "Tracy"
 CONST 2_name = "Erica"
@@ -46,7 +47,6 @@ INT. MOONVIEW MOTEL
 *   "OK..."
 *   [Say nothing]
 -   "First things first. Remember {m_name}? The new maintenance guy we hired?"
-
 - (remember_maintenance_guy)
 *   "{m_name}!"
     "Yeah, {m_name}! <>
@@ -74,51 +74,36 @@ INT. MOONVIEW MOTEL
 
 (Family of 3 walks in)
 
-"Hi folks! Can I get you a room?"
-
-"Hi! Yes, please! We've been driving for most of the day, and we're glad we found this place."
-
-"Happy to help!"
-
-"Hey, I really need to go. Can you place these nice people?"
+{2_name}: "Hi folks! Can I get you a room?"
+Father: "Hi! Yes, please! We've been driving for most of the day, and we're glad we found this place."
+{2_name}: "Happy to help!"
+{2_name}: "Hey, I really need to go. Can you place these nice people?"
 *   "Yeah, have fun."
     "Thanks a million. Have a good night!"
 *   "No."
     "...{1_name}..."
     **  "Just Kidding."
     "...thanks. Have a good night.
-    **  [Blow rasberry] "pthppppthppth"
-    "Real mature. Bye."
+    **  [Blow rasberry]
+    "Real mature. Bye." ({2_name} exits)
 -
-
-({2_name} leaves)
-
 *   "Let's find you a good spot!"
 -   -> place_in_room("family") ->
-
-*   "I've put you in Room {get_room("family")}".
--   "Great. If it isn't too much trouble, could we get a cot for our son?"
-
+"I've put you in Room {get_room("family")}".
+-   Father: "Great. If it isn't too much trouble, could we get a cot for our son?"
 *   "I was just about to ask!["] What's your name, son?"
--   "Tyler"
-
+-   Son: "Tyler"
 *   "Well, Tyler, the Moonview Motel has some of the comfiest cots in the state."
--   "Thanks..."
-
+-   Tyler: "Thanks..."
 *   "It's my pleasure, Tyler.["] When I was your age and went on trips with my parents, I always wanted my own cot. My dad could shake the entire room with his snoring.
--   
-
-(Mother laughs. Tyler stares at you, wide-eyed. The father looks at his shoes, embarrassed)
-
+-   Mother: (laughs). 
+Tyler: (stares, wide-eyed)
+Father: (looks at shoes, embarrassed)
 *   "A nice guy named {m_name} will bring it soon.["] Here's your key – go ahead and get settled. Call me at any time."
 -
 *   "And don't worry, Tyler[..."] – you get used to the snoring eventually.
--
-
-(wife laughs again)
-
-"What?"
-
+-   Mother: (laughs)
+Father: "What?"
 *   "Nothing."
 *   "Goodnight!"
 -
@@ -126,26 +111,20 @@ INT. MOONVIEW MOTEL
 // Chapter 2
 10PM
 
-(bell rings) ({p_name} the policeman walks in)
+(bell rings) (policeman enters)
 *   "{p_name}!"
--   "hmmf... Just {p_name_suggested} is fine, {1_name}. Haven't we talked about this?"
-
+-   \ (sigh) "...Just {p_name_suggested} is fine, {1_name}. Haven't we talked about this?"
 *   "Oh, yeah.["] Sorry, {p_name}!"
--   "hmmf... Another night shift? Do you ask for these, or does your boss just not like you?"
-
+-   \ (sigh) "...Another night shift? Do you ask for these, or does your boss just not like you?"
 *   "I prefer them."
 *   "I ask for them[."], but you may be right about my boss."
 -   "Why? You like the quiet?"
-
 *   "That's a perk[."], but not the main reason. It's more so the people I run into. I see things come from people you don't see in the afternoon."
 -   "Example?"
-
 *   "Well[..."], last night, an elderly couple came in around midnight. It was obvious that midnight was well beyond their bedtime. Anyways, the husband says under his breath, and I got to witness the meanest, most sadistic 15 minute fight a couple could ever have. At one point, they brought up a pet dog they owned in their 20s."
--   "Jeez..."
-
+-   "Geez..."
 *   "It got so bad, they demanded two separate rooms.["] When I told them we only had one, the wife slept in the car. The husband couldn't talk her out of it."
 -   "That's pretty bad."
-
 *   "That's relatively normal!["] I've encountered so many strange things. I just asked the new maintenance guy to call and check on me if he can't sleep.
 -   "Good."
 
@@ -153,10 +132,8 @@ INT. MOONVIEW MOTEL
 
 *   "Yep![] So how can I help you, {p_name_suggested_all_caps}!?
 -   "Well, two things actually."
-
 *   "Not the first time I've heard that tonight."
 -   "Huh?"
-
 *   "Nothing."
 -   "...Anyways."
 
@@ -169,16 +146,12 @@ INT. MOONVIEW MOTEL
 
 *   "Was there something else you wanted to tell me?"
 -   "Ohhh. Yes. Of course. Now, please don't panic. It probably sounds worse than it is."
-
 *   "...Ok..."
--   "hwoo. Very early this morning, there were a series of break-ins that were no doubt related."
-
+-   \ (deep inhale) "Very early this morning, there were a series of break-ins that were no doubt related."
 *   "How do you know they were related?"
 -   "Well... In each case, the residents were fatally beaten. We have no motive. We have no weapon. All we have are five victims across two homes and one motel room.
-
 *   "Oh my..."
 -   "Yeah. Not good."
-
 *   "Why haven't I heard about this?"
     "While they happened somewhere between 3 – 4:30 AM, we didn't catch wind until around 9. One of the victims' boss called us after his no-show."
 *   "Why are you telling me this?"
@@ -190,9 +163,13 @@ INT. MOONVIEW MOTEL
     - treated_police_with_tact:
         -> receive_police_code_word ->
     - else:
-        -> do_not_recieve_police_code_word ->
+        -> do_not_receive_police_code_word ->
 }
 
+({p_name} exits)
+
+*   [Take a deep breath]
+-
 // Chapter 3
 
 10:30PM
@@ -212,7 +189,7 @@ INT. MOONVIEW MOTEL
 -   "Well, the issue had calmed down by the time I got there. The individual who caused the ruckus was lying face down on the ground beside the bar, possibly passed out."
 
 *   "Is that so out of the ordinary?"
--   "No, that was normal. But when I turned him over, I was looking into the scared eyes of {d_name_full}." 
+-   "No, that was normal. But when I turned him over, I was looking into the scared eyes of {d_name_full}."
 
 *   "No..."
 -   "I'm afraid so."
@@ -256,7 +233,7 @@ INT. MOONVIEW MOTEL
 
 *   "We sure do!"
 -   J: "Good! One room please."
-*   "Ok" 
+*   "Ok"
 - -> place_in_room("guys") ->
 *   "Where are you guys headed?"
 -   D: "Haha, Good question. We're not really sure."
@@ -265,7 +242,7 @@ INT. MOONVIEW MOTEL
 *   "Oh my..."
 -   D: "We'll still be friends, man."
 
-(Jared says nothing. Long, awkward silence)
+J: "......"
 
 *   "Well, I know you guys are tired.["] Why don't you guys get some sleep, and in the morning give me a ring. If I'm still here, I'll recommend a good place for breakfast. If I'm not, I'll leave a note for the next person."
 -   J: "That sounds good. Thanks!"
@@ -286,6 +263,72 @@ D: "Our room has two beds, right?"
 -
 
 // Chapter 5
-11PM
+11:30PM
 
+(bell chimes. Woman dressed in all black enters. Early 40s?)
+
+*   "Welcome!"
+-   "Hello..."
+*   "...Everything ok?"
+-   "...Everything is fine."
+*   "OK, good![."] How can I help you?"
+-   "I'd just like a room."
+*   "Certainly!" 
+- -> place_in_room("mother") -> 
+(heavy sigh)
+*   [Ignore sigh]"Well, here's your key!"
+    "Thanks."
+    **  "Let me know if there's anything else you need!"
+    "Thanks."
+    (G leaves)
+    -> DONE
+*   "Are you sure that you're ok?"
+    "...Yeah---" (crying)
+    (Desk Phone Rings)
+    **  [Answer the phone] "Yes?"
+        -> answer_phone_while_talking_to_grieving_mother -> DONE
+    **  [Ignore the phone]
+        (crying)
+        *** "I..."
+        *** [Say nothing]
+        ---
+        (crying)
+        *** "Did you lose someone?"
+        --- "Yes. I did."
+        *** "I'm sorry.["] I lost someone recently as well."
+        ---
+        (crying)
+        *** "No use trying to change what we can't change.	"
+            (crying) "...I'm really tired. Can I have my key?"
+            ****    "Sure!"
+            ----
+            ****    [Hand over key]
+            ----    \ (G leaves)
+            ****    "Whoops."
+            -> DONE
+        *** "What was this person's name?
+			(crying) "...D-David."
+			****    "Tell me about David"
+			----    "...W-well, D-david---" (Phone rings)
+			****    [Answer the phone] "I'm so sorry. This must be important."
+			        -> answer_phone_while_talking_to_grieving_mother -> DONE
+			****    [Ignore the phone again] "That can wait. Please continue."
+			        "W-well...David was the best thing that could ever happen to me. He never hurt anyone. It should have been me who died---" (crying)
+			        *****   "Was David your son?"
+			                (crying) (nods)
+			                ******  "Geez. That's so hard."
+			                ------
+			        *****   "Was David your husband?"
+			                "No...son."
+			                ******  "I'm sorry."
+			                ------
+			        *****   [Say nothing] "---"
+			        -----
+			        (crying) "I haven't slept in 3 days."
+                    *****   "Well it sounds like you're overdue for some good rest then!"
+                    -----   "Haha...Yeah, hopefull---" (crying)
+                    {treated_police_with_tact: -> police_interrupts_grieving_mother ->}
+                    -> DONE
+
+Some more continuation
 -> END
