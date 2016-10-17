@@ -20,7 +20,7 @@ VAR code_word = "Thanksgiving"
 "I'll try to come check on you every two hours. Remember our code word?"
 *   (correct) "{code_word}!"
 *   "Take your daughter to work day!"
--   {correct: "Yep! |(sighs) "...}Well, I'm needed elsewhere. See you around midnight, hopefully."
+-   {correct: "Yep! |(sigh) "...}Well, I'm needed elsewhere. See you around midnight, hopefully."
 *   Sounds like a plan![] Hey, {p_name_suggested}?
 -   "Yes?"
 *   "Thanks."

@@ -6,6 +6,8 @@ INCLUDE tunnels/answer_phone_while_talking_to_grieving_mother.ink
 INCLUDE tunnels/receive_police_phone_number.ink
 INCLUDE tunnels/police_interrupts_grieving_mother.ink
 INCLUDE tunnels/grieving_mother_describes_son.ink
+INCLUDE tunnels/give_police_directory.ink
+
 
 CONST 1_name = "Tracy"
 CONST 2_name = "Erica"
@@ -178,41 +180,30 @@ Father: "What?"
 
 *   "Couldn't stay away, huh?"
 -   "I wish I could have. Looks like I'll be needing a room for the night."
-
 *   "Don't you have to work?"
 -   "The room isn't for me."
-
 *   "Oh..."
 -   "As soon as I left here, I got a call from dispatch. A disturbance at the pub down the highway. Pretty routine, I thought."
-
 *   "What happened?"
 -   "Well, the issue had calmed down by the time I got there. The individual who caused the ruckus was lying face down on the ground beside the bar, possibly passed out."
-
 *   "Is that so out of the ordinary?"
 -   "No, that was normal. But when I turned him over, I was looking into the scared eyes of {d_name_full}."
-
 *   "No..."
 -   "I'm afraid so."
-
 *   "{d_name_nick}?"
 -   "Mm-hmm. Our beloved mascot. The same {d_name} that did back hand springs while you marched and I kept the bench warm."
-
 *   "Oh dear..."
 -   "Pretty sad. {d_name} had it rough after high school."
-
 *   "Yeah."
 -   "Anyways, it's been about a year since I remember him doing anything like this. Can I put him up for the night? He's still a little drunk but he'll be okay. I don't want him to wake up in a jail cell."
-
 *   "That's nice of you.["] Sure, I'll get him a room."
 -   "Thank you. If he pukes on the carpet or does any other damage, send me the bill."
-
 *   "Sure. Thanks."
-- -> place_in_room("drunk") ->
+-   -> place_in_room("drunk") ->
+"Here's the key to room {get_room("drunk")}."
+"Thank you. I'll be back."
 
-*   "Here's the key."
--   "Thank you. I'll be back."
-
-({p_name} leaves)
+({p_name} exits)
 
 // Chapter 4
 11PM
@@ -230,34 +221,26 @@ Father: "What?"
     **  "How can I help you?"
         "Are there any rooms left? We are beat."
 -
-
 *   "We sure do!"
 -   J: "Good! One room please."
-*   "Ok"
-- -> place_in_room("guys") ->
-*   "Where are you guys headed?"
+-   -> place_in_room("guys") ->
+"Where are you guys headed?"
 -   D: "Haha, Good question. We're not really sure."
 *   "Are you running away from home?"
 -   J: "No... My friend here is getting married next month, and we've been best friends since college. We don't have much of a plan, but we decided to drive across the country before I lose him forever."
 *   "Oh my..."
 -   D: "We'll still be friends, man."
-
 J: "......"
-
 *   "Well, I know you guys are tired.["] Why don't you guys get some sleep, and in the morning give me a ring. If I'm still here, I'll recommend a good place for breakfast. If I'm not, I'll leave a note for the next person."
 -   J: "That sounds good. Thanks!"
-
 D: "Yeah, thanks!"
 *   "You bet!"
--
-
-(D + J start to leave)
-
+-   \ (D + J start to leave)
 D: "Our room has two beds, right?"
-*   "I thought you were best friends.[.."] Haha. Yes, separate beds.
+*   "I thought you were best friends...["](laughs) Yes, separate beds.
 -   D: "Cool, thanks."
 
-(D + J leave)
+(D + J exit)
 
 *   "Nice guys."
 -
@@ -274,44 +257,39 @@ D: "Our room has two beds, right?"
 *   "OK, good![."] How can I help you?"
 -   "I'd just like a room."
 *   "Certainly!" 
-- -> place_in_room("mother") -> 
+-   -> place_in_room("mother") -> 
 (heavy sigh)
-*   [Ignore sigh]"Well, here's your key!"
+*   [Ignore sigh and hand over key] "Well, here's your key!"
     "Thanks."
     **  "Let me know if there's anything else you need!"
     "Thanks."
-    (G leaves)
-    -> DONE
+    -- \ (G leaves)
 *   "Are you sure that you're ok?"
     "...Yeah---" (crying)
     (Desk Phone Rings)
     **  [Answer the phone] "Yes?"
-        -> answer_phone_while_talking_to_grieving_mother -> DONE
+        --- -> answer_phone_while_talking_to_grieving_mother ->
     **  [Ignore the phone]
         (crying)
         *** "I..."
         *** [Say nothing]
-        ---
-        (crying)
-        *** "Did you lose someone?"
+        --- \ (crying)
+        *** "...Did you lose someone?"
         --- "Yes. I did."
         *** "I'm sorry.["] I lost someone recently as well."
-        ---
-        (crying)
+        --- \ (crying)
         *** "No use trying to change what we can't change.	"
             (crying) "...I'm really tired. Can I have my key?"
-            ****    "Sure!"
-            ----
-            ****    [Hand over key]
+            ****    "Sure!" [Hand over key]
             ----    \ (G leaves)
             ****    "Whoops."
-            -> DONE
+            ----
         *** "What was this person's name?
 			(crying) "...D-David."
 			****    "Tell me about David"
 			----    "...W-well, D-david---" (Phone rings)
 			****    [Answer the phone] "I'm so sorry. This must be important."
-			        -> answer_phone_while_talking_to_grieving_mother -> DONE
+			        -----   -> answer_phone_while_talking_to_grieving_mother ->
 			****    [Ignore the phone again] "That can wait. Please continue."
 			        "W-well...David was the best thing that could ever happen to me. He never hurt anyone. It should have been me who died---" (crying)
 			        *****   "Was David your son?"
@@ -322,13 +300,18 @@ D: "Our room has two beds, right?"
 			                "No...son."
 			                ******  "I'm sorry."
 			                ------
-			        *****   [Say nothing] "---"
+			        *****   [Say nothing] "..."
 			        -----
-			        (crying) "I haven't slept in 3 days."
+			        (crying) "...I haven't slept in 3 days."
                     *****   "Well it sounds like you're overdue for some good rest then!"
-                    -----   "Haha...Yeah, hopefull---" (crying)
-                    {treated_police_with_tact: -> police_interrupts_grieving_mother ->}
-                    -> DONE
-
-Some more continuation
+                    -----   "Haha...Yeah, hopefully" (crying)
+                    {
+                        - treated_police_with_tact: 
+                            -> police_interrupts_grieving_mother ->
+                        - else:
+                            -> grieving_mother_describes_son ->
+                    }
+-   {treated_police_with_tact: -> give_police_directory ->}
+// Chapter 6
+to be continued...
 -> END
