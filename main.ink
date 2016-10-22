@@ -312,6 +312,181 @@ D: "Our room has two beds, right?"
                             -> grieving_mother_describes_son ->
                     }
 -   {treated_police_with_tact: -> give_police_directory ->}
+
 // Chapter 6
-to be continued...
+1AM 
+
+(phone rings)
+*   [Answer phone] "Moonview Motel front desk."
+-   "Sorry to bother you. There’s been an accident..."
+*   "......I’m sorry, who is this?"
+-   "This is a very embarrassed father."
+*   "I don’t follow..."
+    "(laughs) I didn’t mean to confuse you. These are your friends in room {get_room("family")}.
+    **  "...Ohh...[](laughs) Accident?
+    --  "Yeah...without
+*   "Accident?"
+    "Yeah, there’s been a leak."
+    **  "A leak? Who is this?"
+    --  (laughs) Sorry, should’ve prefaced with that. It’s the family in room {get_room("family")}. Without
+-   <> going into specifics, we’re going to need a new cot.
+*   "..." (stifled laughter)[] "Oh dear. Of course. How is the little guy?
+-   "He’s ok. A little embarrassed. A little wet. Wife is about to give him a bath."
+*   "Good...good."
+-   "Well, I hate to bug you so late in the evening, but what’s the best way to get that cot? I can come grab it, or if it’s better for you to send it here that works too.
+*   "I’ll have it sent ASAP!"
+     Are you sure? I don’t want to wake Pete up.
+    **  "I insist!"
+    --  "Well, ok. Thanks!"
+    **  "My pleasure.["] It will be there soon. Hopefully no more accidents for the little guy – good rest instead."
+    --  "No kidding...Thanks again!"
+    **  "Sure. Goodnight."
+    --
+    ** [Hang up and dial {m_name}] "Hey...Pete? Did I wake you? ...Good. I need a favor.
+    --
+*   "On second thought, I don’t think I want to give you the cot."
+    (awkward laugh) "Good one!"
+    **  [Say nothing]
+    --  "So is it better if I come pick it up now?"
+    **  "No. I’m serious. You can’t have the cot."
+    --  "...I’m going to come to lobby."
+    **  "I don’t care."
+    
+    --  5 MINUTES LATER
+    
+    "I don’t want to come off rude, but we’re all really exhausted and I don’t think this is funny anymore. Can we please get that cot and we’ll leave you alone?"
+    **  "I already told you, the answer is no."
+        "...Are you just toying with me?"
+        *** "No."
+        --- "...What’s your deal? Don’t you have extra cots?"
+        *** "We do...but not for you."
+        --- "I mistook you as being better than this."
+        *** (family_leaves) "I mistook you as being a father who could potty-train his child."
+            "EXCUSE ME?"
+            ****    "You heard me."
+            ----    "You can rip into me all you want, but you do not talk about my son like that!"
+            ****    "Seems like I just did."
+            ----    "...Well it seems like we’d better leave."
+            ****    "Sounds good to me."
+            ----    "...Unbelievable. My wife even raved on how good she thought you were at your job...Whatever is eating at you, I hope you sort it out. (exits. family pack up their car and drives off)
+            ****    "That wasn’t easy."
+            ----
+        *** "Well, I guess you were wrong."
+            "I guess so." (exits)
+        
+    **  "Sure sorry. I’ll have Pete send it soon."
+        "It’s ok. Thank you."
+-
+
+// Chapter 7  
+2AM
+
+({p_name} enters)
+*   {treated_police_with_tact} Hi, Rick!
+    "Hello...Everything ok? Any trouble from our friend Charlie?"
+    **  "No, he’s been fine!["] How’s that background check coming?"
+    --  "Hm? ...Oh! Yes! That. It’s going. Ran a check on everyone, not all are complete. So far no cause for concern. A couple of alcohol-related issues on Charlie’s end, which I know you’re probably aware of.
+    **  "Yeah..."
+    --  "It should be done within an hour or two. I’ll let you know the moment it does."
+    **  "Please do.["] Thanks!"
+    --  "You bet. Hopefully last night was the last of it."
+    **  "Hopefully."
+    --  "Still, please remember to NOT go outside if you hear anything strange. And call me."
+    **  "Stay put...Call you...Got it."
+    --  \ (smiles) "That’s my girl. I’ll be back soon." (leaves)
+*   {not treated_police_with_tact} Hi, Rick!
+    "Hey {1_name}...Everything ok?"
+    **  "It is! Thanks for coming back!"
+    --  "Of course...Have you heard anything? Strange noises? Anything?"
+    **  "I can’t say that I have.["] Maybe a coyote or two?"
+    --  "OK. Well, good...I need a favor."
+    **  "What’s up?"
+    --  "I need your records for the night. I think it would be wise to run checks on everyone here."
+    **  "You don’t think[..."]---"
+    --  "No, I don’t think the killer is here. But this would be a wise precaution."
+    **  "Yes. I agree."
+    --
+    **  [Hand over directory] "Here you go."
+    --  "Thanks. I’ll make these background checks top priority, should be done in a couple hours. We’ll talk soon.
+    **  {not family_leaves} "Ok, thanks!"
+        ({p_name} leaves)
+    **  {family_leaves} "Ok, thanks!"
+        ({p_name} starts to leave)
+        "...Hey, {1_name}?"
+        ***  "Yes?"
+        --- "Why did you cross off room {get_room("family")}?
+        *** "Oh...Well..."
+        ---
+        *** [Tell the truth] "I panicked. They were a nice family, and I guess my fear of what could happen got the better of me."
+            "Because of the murders?"
+            ****    [Nod]
+            ----    "I see...Probably shouldn’t have done that."
+            ****    "...why?"
+            ----    "I just think you’re overreacting a bit, that’s all."
+            ****    "Oh..."
+            ----    "We’ll, I’d better run these checks."
+            ****    "Ok, see you soon."
+            ----    ({p_name} leaves)
+        *** [Lie] "They called around midnight. Said there was a family emergency. Packed up their car and were gone within minutes."
+            "Well, that’s too bad."
+            ****    "Hm?"
+            ----    "About the family emergency, I mean."
+            ****    "Oh. Right."
+            ----    "Well, I’d better run these checks. We’ll be in touch."
+            ****    "Sounds good. Thanks."
+            ----    ({p_name} leaves)
+    
+// Chapter 8
+3AM
+
+(bell rings and young man walks in)
+*   "Hello and welcome to the Moonview Motel!"
+-   \ (young man mutters something under his breath)
+*   [Ignore muttering]
+*   "I'm sorry?"
+    "Nothing"
+-
+*   "How can I help you?"
+-   "A room. The sooner the better."
+-> place_in_room("young_man") -> 
+"Of course! You look a little tired."
+(young man mutters something under his breath again)
+*   "Come again?"
+-   \ (young man doesn’t respond)
+*   "Did you say something?"	
+-   "I said, 'THAT’S NONE OF YOUR BUSINESS'"
+*   [Be harsh] "What’s your name?"
+    "Huh?"
+    **  "WHAT’S YOUR NAME?"
+    --  "T-Thomas..."
+    **  "Well, T-Thomas...["] This information might be shocking and brand new to you, but you aren’t the only one having a bad night. (pause) I’ve been dealing with the police, a possible killer on the loose, a drunk classmate who should PROBABLY be in jail right now, and a maintenance guy who is treating me like his helpless, 8 year old daughter all because I asked him to 'check on me once or twice'. (pause) On top of that, I’ll have worked for 14 hours today. I had to take a second job washing dishes just to pay rent, and it’s another 14 hour day tomorrow. (pause) I get that a few of us aren't where we want to be. But DON’T throw that anger on someone else. It’s hard enough already for them. (Pause) Here is your key, Thomas. Get some sleep.
+    --  "..." (Thomes leaves)
+*   [Be real] "Why are you talking to me like this?"
+    "Like what?"
+    **  "I think you know exactly what I’m talking about.["] I want to make your visit as cozy as possible, and I have tried to do nothing but that since the moment you walked in.
+    --  \ (young man says nothing)
+    **  "What’s your name?"
+    --  "...Thomas."
+    **  "Hello, Thomas.["] I’m {1_name}."
+    --  "Hi..."
+    **  "What’s on your mind, Thomas?"
+    --  "Well..."
+    (Thomas tells a sad story. Thomas had one real friend in the entire city – his roommate. His friend was soft and ate a lot of Thomas’s anger. Unfortunately, Thomas never got the help he needed and T’s anger became too much for his friend. His friend kicked T out and hasn’t talked to him since)
+    **  "I’m sorry, Thomas."
+    --  \ (Thomas says nothing)
+    **  "I think your friend still cares about you, but it sounds like he needs some time to sort things out. Without you. ...Do you think it would be wise to get some help in the meantime?
+    --  "...Yeah. Maybe so."
+    **  "Is there anyone you can stay with in the meantime?["] Hotel life can be expensive."
+    --  "Maybe. A lot of people wouldn’t put up with me like my friend did. ...I may need to change a few things. ...Thanks."
+    **  [Smile] "My pleasure."
+    --  "..."
+    **  "Well, you’re welcome at the Moonview Motel anytime.["] And since this night's halfway over, I’ll only charge you half-price for the night. Sound fair?
+    --  "Yeah. (smiles) That sounds fair."
+    **  "Have a good night[."], Thomas. Get some rest. Don’t hesitate to call if you need anything.
+    --  \ (Thomas leaves)
+    
+// Chapter 9
+4AM
+
+
 -> END
