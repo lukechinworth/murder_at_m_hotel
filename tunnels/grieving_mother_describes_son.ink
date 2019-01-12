@@ -5,7 +5,7 @@
 -   \ (smile) "Same here. He would've liked you. (yawn)
 *   "Hey, you should probably get some rest."
 -   \ (sleepily) "Yeah, I guess so..."
-*   \ (smile) "You'll be in room {get_room("mother")}"
+*   \ (smile) "You'll be in room {get_room_number_by_occupant("mother")}"
 -   G: (deep yawn) "Thank you."
 *   "My pleasure."
 (G exits)

@@ -1,6 +1,6 @@
 == receive_police_phone_number
 
-<> Stay in here and call me first. Here's my cell number." (hands over piece of paper)
+<> Stay in here and call me first. Here's my cell number." {policeman_name} hands over piece of paper.
 *   "Thanks."
 -   "I'm serious! Stay put!"
 

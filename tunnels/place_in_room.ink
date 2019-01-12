@@ -1,12 +1,12 @@
-== place_in_room(placee)
+== place_in_room(occupant)
 *   [Room 1]
-    ~ room_1 = placee
+    ~ room_1_occupant = occupant
 *   [Room 2]
-    ~ room_2 = placee
+    ~ room_2_occupant = occupant
 *   [Room 3]
-    ~ room_3 = placee
+    ~ room_3_occupant = occupant
 *   [Room 4]
-    ~ room_4 = placee
+    ~ room_4_occupant = occupant
 *   [Room 5]
-    ~ room_5 = placee
+    ~ room_5_occupant = occupant
 - ->->
