@@ -1,5 +1,6 @@
 INCLUDE tunnels/place_in_room.ink
 INCLUDE functions/get_room_number_by_occupant.ink
+INCLUDE functions/get_did_prevent_murders.ink
 INCLUDE tunnels/receive_police_code_word.ink
 INCLUDE tunnels/do_not_receive_police_code_word.ink
 INCLUDE tunnels/answer_phone_while_talking_to_grieving_mother.ink
@@ -203,8 +204,8 @@ The door bell dings as {policeman_name} enters.
 *   "That's nice of you.["] Sure, I'll get him a room."
 -   "Thank you. If he pukes on the carpet or does any other damage, send me the bill."
 *   "Sure. Thanks."
--   -> place_in_room("drunk") ->
-"Here's the key to room {get_room_number_by_occupant("drunk")}."
+-   -> place_in_room("drunk_guy") ->
+"Here's the key to room {get_room_number_by_occupant("drunk_guy")}."
 "Thank you. I'll be back."
 
 {policeman_name} exits.
@@ -228,7 +229,7 @@ The door bell dings as two men, both around 30, walk in.
 -
 *   "We sure do!"
 -   First: "Good! One room please."
--   -> place_in_room("guys") ->
+-   -> place_in_room("two_guy_friends") ->
 "Where are you guys headed?"
 -   Second: "Haha, Good question. We're not really sure."
 *   "Are you running away from home?"
@@ -261,7 +262,7 @@ The door bell chimes as a woman dressed in all black, early forties, enters.
 *   "OK, good!["] How can I help you?"
 -   "I'd just like a room."
 *   "Certainly!"
--   -> place_in_room("mother") ->
+-   -> place_in_room("griever") ->
 The woman sighs heavily.
 *   "Well, here's your key!"
     "Thanks."
@@ -332,7 +333,7 @@ The desk phone rings.
     **  "A leak? Who is this?"
     --  "Haha. Sorry, should’ve prefaced with that. It’s the family in room {get_room_number_by_occupant("family")}. Without
 -   <> going into specifics, we’re going to need a new cot.
-*   [Stifle laughter.]Tracy stifles her laughter. "...Oh dear. Of course. How is the little guy?
+*   [Stifle laughter.]{player_character_name} stifles her laughter. "...Oh dear. Of course. How is the little guy?
 -   "He’s ok. A little embarrassed. A little wet. Wife is about to give him a bath."
 *   "Good...good."
 -   "Well, I hate to bug you so late in the evening, but what’s the best way to get that cot? I can come grab it, or if it’s better for you to send it here that works too.
@@ -354,7 +355,7 @@ The desk phone rings.
     --  "...I’m going to come to lobby."
     **  "I don’t care."
 
-    --  5 MINUTES LATER
+    --  1:05AM
 
     "I don’t want to come off rude, but we’re all really exhausted and I don’t think this is funny anymore. Can we please get that cot and we’ll leave you alone?"
     **  "I already told you, the answer is no."
@@ -461,7 +462,7 @@ The young man mutters something under his breath again.
     --  "T-Thomas..."
     **  "Well, T-Thomas...["] This information might be shocking and brand new to you, but you aren’t the only one having a bad night. I’ve been dealing with the police, a possible killer on the loose, a drunk classmate who should PROBABLY be in jail right now, and a maintenance guy who is treating me like his helpless, 8 year old daughter all because I asked him to 'check on me once or twice'. On top of that, I’ll have worked for 14 hours today. I had to take a second job washing dishes just to pay rent, and it’s another 14 hour day tomorrow. I get that a few of us aren't where we want to be. But DON’T throw that anger on someone else. It’s hard enough already for them. Here is your key, Thomas. Get some sleep.
     --  "..." Thomes leaves.
-*   (young_man_get_to_open_up) [Be real.] "Why are you talking to me like this?"
+*   (young_man_open_up) [Be real.] "Why are you talking to me like this?"
     "Like what?"
     **  "I think you know exactly what I’m talking about.["] I want to make your visit as cozy as possible, and I have tried to do nothing but that since the moment you walked in.
     --  "..."
@@ -489,26 +490,140 @@ The young man mutters something under his breath again.
 4AM
 {policeman_name} enters the lobby.
 
-* "Hi, {policeman_personally_preferred_name}!"
-- "Hello."
-* "...Is everything ok?"
-- {policeman_name} sighs. "I hope so, but it might not be."
-* "What’s wrong?["] Are we in danger?"
-- "No, no... I think we’ll be ok. But I think I may have made a pretty big mistake."
-* "Oh?"
-- "Well, I ran those background checks like I said I would. And they turned out mostly ok."
-* "Mostly?"
-- "As it turns out, three years ago a case went unsolved. A woman was inside her house one night when a stranger broke in. She claimed he attacked her and even tried to strangle her. Luckily for her, a neighbor was walking by at just the right time and heard her screaming. Before the murder could happen, the neighbor kicked down the door. By the time he reached the kitchen, the intruder had bolted out the back door and was well into the woods."
-* "Who was the intruder?"
-- "We don’t know for sure, but the woman’s description was a near perfect match of..."
-* "...Of?"
-- "Charlie."
-* "No["]..."
-- "I'm afraid so."
-* "Why wasn’t he arrested?"
-- "We brought him in for questioning, but he denied all charges. His friend gave a solid alibi, and we just didn’t have any proof. And I believed him, too. Just like that. On top of all of this, the victim was a drug addict with a much worse record than him. It was her word against his, and she had previously lied in court on two separate occasions."
-* "So[..."], you think Charlie killed these people last night?"
-- "I don’t know. But I’m damn certain he won’t be staying here another minute. Sorry to put you through all this."
+*   "Hi, {policeman_personally_preferred_name}!"
+-   "Hello."
+*   "...Is everything ok?"
+-   {policeman_name} sighs. "I hope so, but it might not be."
+*   "What’s wrong?["] Are we in danger?"
+-   "No, no... I think we’ll be ok. But I think I may have made a pretty big mistake."
+*   "Oh?"
+-   "Well, I ran those background checks like I said I would. And they turned out mostly ok."
+*   "Mostly?"
+-   "As it turns out, three years ago a case went unsolved. A woman was inside her house one night when a stranger broke in. She claimed he attacked her and even tried to strangle her. Luckily for her, a neighbor was walking by at just the right time and heard her screaming. Before the murder could happen, the neighbor kicked down the door. By the time he reached the kitchen, the intruder had bolted out the back door and was well into the woods."
+*   "Who was the intruder?"
+-   "We don’t know for sure, but the woman’s description was a near perfect match of..."
+*   "...Of?"
+-   "Charlie."
+*   "No["]..."
+-   "I'm afraid so."
+*   "Why wasn’t he arrested?"
+-   "We brought him in for questioning, but he denied all charges. His friend gave a solid alibi, and we just didn’t have any proof. And I believed him, too. Just like that. On top of all of this, the victim was a drug addict with a much worse record than him. It was her word against his, and she had previously lied in court on two separate occasions."
+*   "So[..."], you think Charlie killed these people last night?"
+-   "I don’t know. But I’m damn certain he won’t be staying here another minute. Sorry to put you through all this."
 
+~ temp did_prevent_murders = get_did_prevent_murders()
 
+*   {not did_prevent_murders} "That’s ok. You didn’t know."
+    "...Well. I’m gonna do what I should have done several hours ago. I’m taking {drunk_guy_name} to jail." {policeman_name} leaves.
+    // TODO: go to news story section. Each way you play the game ends with a news story of the murder. The news stories will be designed to give clues on how to prevent the murder and the identity of the murderer next time you play.
+    -> END
+*   {did_prevent_murders} "It won’t be worse than my Thanksgiving!"
+-   "Ha-" {policeman_name} pauses, then pulls out a note pad and writes, "What’s wrong?"
+*   Write, "Let’s talk somewhere private."
+- {policeman_name} writes, "Follow me to my car."
+// Chapter 10
+\---
+4:15AM
+
+-   "What’s wrong?"
+*   "Are you sure it’s Charlie?["] I know he’s had a rough decade since we graduated, but do you really think he could do this?"
+-   "...As his friend, no I don’t. But based off of the facts, yes I do. But none of that is important right now – I need to get him out of here."
+*   "I understand.["] Can you do me one favor before you go?"
+-   "What’s that?"
+*   "I want to make sure everyone is ok.["] Can you gently knock on everyone’s door?"
+-   "...I don’t want to do that."
+*   "Why?"
+-   "You want me to go back and knock on everyone’s door at 4 in the morning? I don’t think they’ll like that."
+*   "What do you mean by "go back"?"
+-   "Uh...I already checked on them earlier."
+*   "When?"
+-   "Are we playing 20 questions?!"
+*   [Say nothing.] "..."
+*   "Just wondering.["] I’m somewhat responsible for this too, you know."
+-   "I need you to let me do my job."
+*   "Well could you still check?"
+    "You’re killing me." {policeman_name} sighs. "FINE. One quick check. Please go wait inside, and don’t come out."
+    **  "Ok. Thank you."
+// TODO: ask john if we should leave chance to lose game here. 
+*   "I’m sorry. You’re right."
+    {policeman_name} sighs. "Thanks. Now, I need to take {drunk_guy_name} in. Can I do that?"
+    **  "Sure."
+    --  "Thank you. Please go back inside."
+    // TODO: go to news story.
+    -> END
+- 
+// Chapter 11
+4:30PM
+{policeman_name} enters the lobby.
+*   "Well??"
+-   "Nothing to worry about, at least I THINK. No one answered their doors."
+*   "Really?["] No one?"
+-   "Really. No one."
+*   "That’s strange.["] Did you knock very loudly?"
+-   {policeman_name} sighs. "Yes, {player_character_name}. I knocked at a level they could hear if they weren’t fast asleep. Only person who responded was the little boy in room {get_room_number_by_occupant("family")}. He didn’t answer the door, just met me at the window. He looked scared, so I winked at him and motioned for him to go back to sleep."
+*   "Oh, you saw the boy?"
+-   "...Did I not just say that? Yes! Now is that all?"
+*   "I just think it’s kind of strange that you saw the boy.["] He and his parents left a few hours ago."
+-   "No they didn’t, they’re-"
+*   "They’re what?"
+-   "..."
+*   "On the directory I gave you?"
+-   "..."
+*   "Did you really knock on everyone’s door?"
+-   "...No."
+*   "Why?"
+-   "Because I was scared."
+*   "Scared of what?"
+-   "Scared of being recognized."
+*   "By who?"
+// TODO: does the player know who Jared is.
+-   "...By Thomas. And Jared."
+*   "When did they see you?"
+// TODO: clarify woman in black.
+-   "When I tried to break in to the woman’s room. And when I tried to break in to Pete's room."
+*   "..."
+-   "..."
+*   "Oh, Rick..."
+-   "Surprise."
+*   "And you were going to pin the whole thing on Charlie?"
+-   "Charlie may have killed that drug addict for all I know, and he could’ve murdered those people last night."
+// TODO: what does this mean?
+*   "That wasn’t you?"
+-   "No." {policeman_name} pauses. "But I’ve thought about it for a while. And I thought tonight was my chance."
+*   "...Well what now?"
+-   "Well...I suppose I could just kill you now. Throw you in that pool, plant some evidence that it was Charlie, and leave him in his room. With what happened three years ago, he won’t get out of this one."
+*   "Yeah, you could.["] But you won’t."
+-   "Why’s that?"
+*   "Because I know you too well."
+    "...Hm?"
+*   "Because you’re a coward."
+    "..."
+    ** "..."
+	-- "Oh yeah?" {policeman_name} makes a move toward {player_character_name}.
+	-> END
+-
+*   "I’ve known you for over twenty years now.["] I know you had a rough upbringing – and maybe I underestimated just how rough it was – but you’ve always taken the heat for other people, not the other way around like you’re doing with Charlie right now." {player_character_name} pauses. 
+-
+*   "Remember in 4th grade[..."] when I broke the teacher’s window and was terrified of my parents finding out? You took all of the punishment for me, knowing there would be much worse waiting for you at your home. And I didn’t even ask you to. In fact, I think I asked you not to."
+-   "..."
+// TODO: not clear to me how Tracy knows that these guys prevented the murders.
+*   "Thanks to Thomas and those two nice guys, you still haven’t killed anyone.["] Your life isn’t over, Rick. You just need help."
+-   "Yeah..."
+*   "I have a plan.["] First of all, take {drunk_guy_name} in. The thought of him being here is a little scary. But afterwards, please turn yourself in. Your coworkers, your friends – they will find you help. I will find you help." {player_character_name} pauses. 
+-
+*   "Asking for it is not a sign of weakness.["] If I had taken that advice a few years ago, I wouldn’t be working two jobs I hate just to survive. And I definitely wouldn’t be so lonely."
+-   "..."
+*   "Turn yourself in[."] and I won’t tell a soul that this conversation occurred." {player_character_name} pauses. 
+-
+*   "Sound like a plan?"
+-   "...Yeah. Sounds like a plan." {policeman_name} leaves.
+{desk_girl_name} enters.
+-   "Was that a cop?"
+*   "Oh. Yeah."
+-   "...Is everything ok?"
+*   "Yeah.["] Pretty dull night, to be honest." {player_character_name} pauses. 
+-
+*   "Pete is in room 6.["] Have a good shift!" {player_character_name} leaves. 
+// TODO: go to news story.
+THE END YOU WIN
 -> END
