@@ -3,9 +3,9 @@
     // TODO: return boolean here
     - not treat_policeman_with_tact:
         ~ return false
-    - room_3_occupant != "family" && room_4_occupant != "family":
+    - room_3_occupant != FAMILY_ID && room_4_occupant != FAMILY_ID:
         ~ return false
-    - room_3_occupant != "drunk_guy" && room_4_occupant != "drunk_guy":
+    - room_3_occupant != DRUNK_GUY_ID && room_4_occupant != DRUNK_GUY_ID:
         ~ return false
     - room_2_occupant != "two_guy_friends" && room_5_occupant != "two_guy_friends":
         ~ return false

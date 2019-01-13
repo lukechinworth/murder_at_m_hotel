@@ -16,9 +16,11 @@ CONST maintenance_guy_name = "Pete"
 CONST policeman_name = "Ricky"
 CONST policeman_personally_preferred_name = "Rick"
 CONST policeman_personally_preferred_name_confirmation = "RICK"
+CONST DRUNK_GUY_ID = "drunk_guy"
 CONST drunk_guy_name = "Charlie"
 CONST drunk_guy_name_full = "Charlie Chaplin"
 CONST drunk_guy_name_nick = "Lester the Lion Charlie"
+CONST FAMILY_ID = "family"
 CONST family_son_name = "Tyler"
 
 VAR room_1_occupant = ""
@@ -29,17 +31,14 @@ VAR room_5_occupant = ""
 VAR room_6_occupant = "maintenance"
 VAR treat_policeman_with_tact = true
 
-// TODO: Figure out what voice to use for narration (text in parens)
 
 // Chapter 1
 Murder at Moonview Motel
-written by John Reimer
-programming by Luke Chinworth
 
 * \---
 -
 9PM
-Rain can be heard outside from the lobby of the Moonview Motel. Door bell dings, and {player_character_name} walks in. Girl roughly {player_character_name}'s age is working the counter.
+Rain can be heard outside from the lobby of the Moonview Motel. The lobby door chimes as {player_character_name} walks in. Another girl, roughly {player_character_name}'s age, is working the counter.
 "Hey, {player_character_name}!"
 *   "Heyyyyyyy!"
 -   "Are you ready for your shift?"
@@ -51,7 +50,7 @@ Rain can be heard outside from the lobby of the Moonview Motel. Door bell dings,
     **  [Laugh weakly.] "Heh."
 -   "Now listen. There's a couple of important things I have to go over with you. I'm running late for my date, so I'm only going to say it once."
 *   "OK..."
-*   [Say nothing.]
+*   [Say nothing.] "..."
 -   "First things first. Remember {maintenance_guy_name}? The new maintenance guy we hired?"
 - (remember_maintenance_guy)
 *   "{maintenance_guy_name}!"
@@ -70,39 +69,31 @@ Rain can be heard outside from the lobby of the Moonview Motel. Door bell dings,
 *   "Oh no..."
 -   "Yeah. I would try to avoid putting anyone there unless it was necessary. Apparently it's "infuriating"."
 *   "I'd bet.["] Outside of room 1 you said?"
--   "Yes. Here, I'll mark it on the floor plan."
-
-{desk_girl_name} marks alarm next to room 1 with a red "X".
-
-"I know how annoying some of our customers can be. If you get too much lip again, don't hesitate to tell them they are never (Door bell dings as a family of three walks in.) WELCOME TO THE MOONVIEW MOTEL! Hi folks! Can I get you a room?"
-Father: "Hi! Yes, please! We've been driving for most of the day, and we're glad we found this place."
-{desk_girl_name}: "Happy to help!"
-{desk_girl_name} turns to {player_character_name}.
-"Hey, I really need to go. Can you place these people?"
+-   "Yes. Here, I'll mark it on the floor plan." {desk_girl_name} marks alarm next to room 1 with a red "X". "I know how annoying some of our customers can be. If you get too much lip again, don't hesitate to tell them they are never (Lobby door chimes as a family of three walks in.) WELCOME TO THE MOONVIEW MOTEL! Hi folks! Can I get you a room?"
+-   Father: "Hi! Yes, please! We've been driving for most of the day, and we're glad we found this place."
+{desk_girl_name}: "Happy to help!" {desk_girl_name} turns to {player_character_name}. "Hey, I really need to go. Can you place these people?"
 *   "Yeah, have fun."
-    "Thanks a million. Have a good night!"
+    {desk_girl_name}: "Thanks a million. Have a good night!" {desk_girl_name} exits.
 *   "No."
-    "...{player_character_name}..."
+    {desk_girl_name}: "...{player_character_name}..."
     **  "Just Kidding."
-    "...thanks. Have a good night."
-    **  [Blow rasberry] ({player_character_name} blows rasberry)
-    "Real mature. Bye." ({desk_girl_name} exits)
+    {desk_girl_name}: "...Thanks. Have a good night."
+    **  [Blow rasberry.] "Pthpppbthppth."
+    {desk_girl_name}: "Real mature. Bye." {desk_girl_name} exits.
 -
-*   "Let's find you guys a good spot!"
--   -> place_in_room("family") ->
-"I've put you in room {get_room_number_by_occupant("family")}".
+*   "Let's find you guys a good spot!" -> place_in_room(FAMILY_ID) ->
+"You will be in room {get_room_number_by_occupant(FAMILY_ID)}".
 -   Father: "Great. If it isn't too much trouble, could we get a cot for our son?"
 *   "I was just about to ask!["] What's your name, son?"
 -   Son: "{family_son_name}"
 *   "Well, {family_son_name}, the Moonview Motel has some of the comfiest cots in the state."
 -   {family_son_name}: "Thanks..."
 *   "It's my pleasure, {family_son_name}.["] When I was your age and went on trips with my parents, I always wanted my own cot. My dad could shake the entire room with his snoring."
--
-The mother laughs, {family_son_name} stares, wide-eyed, and the father looks at his shoes, embarrassed.
+-   The mother laughs, {family_son_name} stares, wide-eyed, and the father looks at his shoes, embarrassed.
 *   "A nice guy named {maintenance_guy_name} will bring the cot to you soon.["] Here's your key. Go ahead and get settled. Call me at any time. And don't worry, {family_son_name} – you get used to the snoring eventually."
 -   \ The mother laughs.
 Father: "What?"
-*   [Smile]
+*   [Smile.] {player_character_name} smiles.
 *   "Goodnight!"
 -
 
@@ -127,7 +118,7 @@ The door bell dings as a policeman enters the lobby.
 *   "That's relatively normal!["] I've encountered so many strange things. Like, I just asked the new maintenance guy to call and check on me if he can't sleep.
 // Editor's note: added this line to make it flow.
 -   "That's nice of you."
-*   "Thanks![] So how can I help you, {policeman_personally_preferred_name_confirmation}!?" {player_character_name} winks. 
+*   "Thanks![] So how can I help you, {policeman_personally_preferred_name_confirmation}!?" {player_character_name} winks.
 // TODO: Check with john about "plot hole" note from script. Does it have to do with hearing "two thiings" earlier?
 -   "Well, two things actually."
 *   "Not the first time I've heard that tonight."
@@ -145,8 +136,10 @@ The door bell dings as a policeman enters the lobby.
     "Oh! Sorry. I didn't mean anything weird or anything. Sorry."
     **  "No, I'm sorry[..."]. It's just, I get asked out all the time at my job."
         "Yeah. Totally. Sorry. Forget I ever brought it up."
-    ** (treat_policeman_without_tact) "I'm so sick of guys asking me out on the job!"
+    **  (treat_policeman_without_tact) "I'm so sick of guys asking me out on the job!"
         "..."
+        *** "..."
+            "Uh..."
 { treat_policeman_without_tact:
     ~ treat_policeman_with_tact = false
 }
@@ -154,15 +147,15 @@ The door bell dings as a policeman enters the lobby.
 *   "Uh...["]Was there something else you wanted to tell me?"
 -   "Ohhh. Yes. Of course. Now, please don't panic. It probably sounds worse than it is."
 *   "...Ok..."
--   \ {policeman_name} inhales deeply. "Very early this morning, there were a series of break-ins that were no doubt related."
+-   {policeman_name} inhales deeply. "Very early this morning, there were a series of break-ins that were no doubt related."
 *   "How do you know they were related?"
--   "Well... In each case, the residents were fatally beaten. We have no motive. We have no weapon. All we have are five victims across two homes and one motel room.
+-   "Well... In each case, the residents were fatally beaten. We have no motive. We have no weapon. All we have are five victims across two homes and one motel room."
 *   "Oh my..."
 -   "Yeah. Not good."
 *   "Why haven't I heard about this?"
     "While they happened somewhere between 3 – 4:30 AM, we didn't catch wind until around 9. One of the victims' boss called us after his no-show."
 *   "Why are you telling me this?"
-   "I didn't want to scare you, believe me! But I thought you should know because... well... (looks down at his shoes) each break-in occurred within a mile of this motel."
+    "I didn't want to scare you, believe me! But I thought you should know because... well...," {policeman_name} looks down at his shoes, "each break-in occurred within a mile of this motel."
 -
 *   "Yikes..."
 -
@@ -203,12 +196,9 @@ The door bell dings as {policeman_name} enters.
 -   "Anyways, it's been about a year since I remember him doing anything like this. Can I put him up for the night? He's still a little drunk but he'll be okay. I don't want him to wake up in a jail cell."
 *   "That's nice of you.["] Sure, I'll get him a room."
 -   "Thank you. If he pukes on the carpet or does any other damage, send me the bill."
-*   "Sure. Thanks."
--   -> place_in_room("drunk_guy") ->
-"Here's the key to room {get_room_number_by_occupant("drunk_guy")}."
-"Thank you. I'll be back."
-
-{policeman_name} exits.
+*   "Sure. Thanks." -> place_in_room(DRUNK_GUY_ID) ->
+-   "Here's the key to room {get_room_number_by_occupant(DRUNK_GUY_ID)}."
+-   "Thank you. I'll be back." {policeman_name} exits.
 
 // Chapter 4
 \---
@@ -325,13 +315,13 @@ The desk phone rings.
 *   "...I’m sorry, who is this?"
 -   "This is a very embarrassed father."
 *   "I don’t follow..."
-    "Haha. I didn’t mean to confuse you. This is your friends in room {get_room_number_by_occupant("family")}.
+    "Haha. I didn’t mean to confuse you. This is your friends in room {get_room_number_by_occupant(FAMILY_ID)}.
     **  "...Ohh...[]Haha. Accident?
     --  "Yeah...without
 *   "Accident?"
     "Yeah, there’s been a leak."
     **  "A leak? Who is this?"
-    --  "Haha. Sorry, should’ve prefaced with that. It’s the family in room {get_room_number_by_occupant("family")}. Without
+    --  "Haha. Sorry, should’ve prefaced with that. It’s the family in room {get_room_number_by_occupant(FAMILY_ID)}. Without
 -   <> going into specifics, we’re going to need a new cot.
 *   [Stifle laughter.]{player_character_name} stifles her laughter. "...Oh dear. Of course. How is the little guy?
 -   "He’s ok. A little embarrassed. A little wet. Wife is about to give him a bath."
@@ -416,7 +406,7 @@ The desk phone rings.
     **  {family_leaves} "Ok, thanks!"
         {policeman_name} starts to leave. "...Hey, {player_character_name}?"
         ***  "Yes?"
-        --- "Why did you cross off room {get_room_number_by_occupant("family")}?
+        --- "Why did you cross off room {get_room_number_by_occupant(FAMILY_ID)}?
         *** "Oh...Well..."
         ---
         *** [Tell the truth.] "I panicked. They were a nice family, and I guess my fear of what could happen got the better of me."
@@ -544,14 +534,14 @@ The young man mutters something under his breath again.
 *   "Well could you still check?"
     "You’re killing me." {policeman_name} sighs. "FINE. One quick check. Please go wait inside, and don’t come out."
     **  "Ok. Thank you."
-// TODO: ask john if we should leave chance to lose game here. 
+// TODO: ask john if we should leave chance to lose game here.
 *   "I’m sorry. You’re right."
     {policeman_name} sighs. "Thanks. Now, I need to take {drunk_guy_name} in. Can I do that?"
     **  "Sure."
     --  "Thank you. Please go back inside."
     // TODO: go to news story.
     -> END
-- 
+-
 // Chapter 11
 4:30PM
 {policeman_name} enters the lobby.
@@ -560,7 +550,7 @@ The young man mutters something under his breath again.
 *   "Really?["] No one?"
 -   "Really. No one."
 *   "That’s strange.["] Did you knock very loudly?"
--   {policeman_name} sighs. "Yes, {player_character_name}. I knocked at a level they could hear if they weren’t fast asleep. Only person who responded was the little boy in room {get_room_number_by_occupant("family")}. He didn’t answer the door, just met me at the window. He looked scared, so I winked at him and motioned for him to go back to sleep."
+-   {policeman_name} sighs. "Yes, {player_character_name}. I knocked at a level they could hear if they weren’t fast asleep. Only person who responded was the little boy in room {get_room_number_by_occupant(FAMILY_ID)}. He didn’t answer the door, just met me at the window. He looked scared, so I winked at him and motioned for him to go back to sleep."
 *   "Oh, you saw the boy?"
 -   "...Did I not just say that? Yes! Now is that all?"
 *   "I just think it’s kind of strange that you saw the boy.["] He and his parents left a few hours ago."
@@ -602,18 +592,18 @@ The young man mutters something under his breath again.
 	-- "Oh yeah?" {policeman_name} makes a move toward {player_character_name}.
 	-> END
 -
-*   "I’ve known you for over twenty years now.["] I know you had a rough upbringing – and maybe I underestimated just how rough it was – but you’ve always taken the heat for other people, not the other way around like you’re doing with Charlie right now." {player_character_name} pauses. 
+*   "I’ve known you for over twenty years now.["] I know you had a rough upbringing – and maybe I underestimated just how rough it was – but you’ve always taken the heat for other people, not the other way around like you’re doing with Charlie right now." {player_character_name} pauses.
 -
 *   "Remember in 4th grade[..."] when I broke the teacher’s window and was terrified of my parents finding out? You took all of the punishment for me, knowing there would be much worse waiting for you at your home. And I didn’t even ask you to. In fact, I think I asked you not to."
 -   "..."
 // TODO: not clear to me how Tracy knows that these guys prevented the murders.
 *   "Thanks to Thomas and those two nice guys, you still haven’t killed anyone.["] Your life isn’t over, Rick. You just need help."
 -   "Yeah..."
-*   "I have a plan.["] First of all, take {drunk_guy_name} in. The thought of him being here is a little scary. But afterwards, please turn yourself in. Your coworkers, your friends – they will find you help. I will find you help." {player_character_name} pauses. 
+*   "I have a plan.["] First of all, take {drunk_guy_name} in. The thought of him being here is a little scary. But afterwards, please turn yourself in. Your coworkers, your friends – they will find you help. I will find you help." {player_character_name} pauses.
 -
 *   "Asking for it is not a sign of weakness.["] If I had taken that advice a few years ago, I wouldn’t be working two jobs I hate just to survive. And I definitely wouldn’t be so lonely."
 -   "..."
-*   "Turn yourself in[."] and I won’t tell a soul that this conversation occurred." {player_character_name} pauses. 
+*   "Turn yourself in[."] and I won’t tell a soul that this conversation occurred." {player_character_name} pauses.
 -
 *   "Sound like a plan?"
 -   "...Yeah. Sounds like a plan." {policeman_name} leaves.
@@ -621,9 +611,12 @@ The young man mutters something under his breath again.
 -   "Was that a cop?"
 *   "Oh. Yeah."
 -   "...Is everything ok?"
-*   "Yeah.["] Pretty dull night, to be honest." {player_character_name} pauses. 
+*   "Yeah.["] Pretty dull night, to be honest." {player_character_name} pauses.
 -
-*   "Pete is in room 6.["] Have a good shift!" {player_character_name} leaves. 
+*   "Pete is in room 6.["] Have a good shift!" {player_character_name} leaves.
 // TODO: go to news story.
 THE END YOU WIN
+
+written by John Reimer
+programmed by Luke Chinworth
 -> END
