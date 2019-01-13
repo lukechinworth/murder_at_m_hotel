@@ -5,8 +5,7 @@
 *   "Yes, please!"
 -   "Great! Well, first let's establish a code word. Any time you have something you want to tell me but are afraid someone is listening, mention "{code_word}". It's only weeks away – won't seem too out of the ordinary.
 *   "Got it..."
--   (code_word_test)
-{|"It's "{code_word}"."|"{code_word}."|"..."}
+-   (code_word_test) {|"It's "{code_word}"."|"{code_word}."|"..."}
 *   "{code_word}."
     {code_word_test < 4: "Yep! |"Yeah...}<>
 *   "Christmas."
@@ -25,7 +24,7 @@
 *   "Sounds like a plan!["] Hey, {policeman_personally_preferred_name}?"
 -   "Yes?"
 *   "Thanks."
--   (smiles) "It's my pleasure."
+-   {policeman_name} smiles. "It's my pleasure."
 ->->
 
 

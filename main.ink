@@ -44,7 +44,7 @@ Rain can be heard outside from the lobby of the Moonview Motel. The lobby door c
 -   "Are you ready for your shift?"
 *   "Yes."
     "That's the spirit."
-    **  [Pump fist in the air.]
+    **  [Pump fist in the air.] "Mmph."
 *   "No."
     "Not with that attitude you aren't!"
     **  [Laugh weakly.] "Heh."
@@ -543,7 +543,7 @@ The young man mutters something under his breath again.
     -> END
 -
 // Chapter 11
-4:30PM
+4:30AM
 {policeman_name} enters the lobby.
 *   "Well??"
 -   "Nothing to worry about, at least I THINK. No one answered their doors."
