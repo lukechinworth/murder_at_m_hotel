@@ -31,11 +31,8 @@ VAR room_5_occupant = ""
 VAR room_6_occupant = "maintenance"
 VAR treat_policeman_with_tact = true
 
-
+* [Click to begin.]
 // Chapter 1
-Murder at Moonview Motel
-
-* \---
 -
 9PM
 Rain can be heard outside from the lobby of the Moonview Motel. The lobby door chimes as {player_character_name} walks in. Another girl, roughly {player_character_name}'s age, is working the counter.
