@@ -35,12 +35,10 @@ Murder at Moonview Motel
 written by John Reimer
 programming by Luke Chinworth
 
-* ---
+* \---
 -
-
 9PM
 Rain can be heard outside from the lobby of the Moonview Motel. Door bell dings, and {player_character_name} walks in. Girl roughly {player_character_name}'s age is working the counter.
-
 "Hey, {player_character_name}!"
 *   "Heyyyyyyy!"
 -   "Are you ready for your shift?"
@@ -181,8 +179,8 @@ The door bell dings as a policeman enters the lobby.
 // Chapter 3
 
 \---
-1030PM
-Door bell dings as {policeman_name} enters.
+10:30PM
+The door bell dings as {policeman_name} enters.
 
 *   "Couldn't stay away, huh?"
 -   "I wish I could have. Looks like I'll be needing a room for the night."
@@ -191,7 +189,7 @@ Door bell dings as {policeman_name} enters.
 *   "Oh..."
 -   "As soon as I left here, I got a call from dispatch. A disturbance at the pub down the highway. Pretty routine, I thought."
 *   "What happened?"
--   "Well, the issue had calmed down by the time I got there. The individual who caused the ruckus was lying face down on the ground beside the bar, possibly passed out."
+-   "Well, the issue had calmed down by the time I got there. The individual who caused the ruckus was lying face down on the ground beside the bar. I thought he was unconscious."
 *   "Is that so out of the ordinary?"
 -   "No, that was normal. But when I turned him over, I was looking into the scared eyes of {drunk_guy_name_full}."
 *   "No..."
@@ -209,52 +207,52 @@ Door bell dings as {policeman_name} enters.
 "Here's the key to room {get_room_number_by_occupant("drunk")}."
 "Thank you. I'll be back."
 
-({policeman_name} exits)
+{policeman_name} exits.
 
 // Chapter 4
+\---
 11PM
 
-(bell chimes. Two men walk in, both around 30?)
+The door bell dings as two men, both around 30, walk in.
 
 *   "HOWWWWWDY, FOLKS!"
-    J: "Well, HOWWWWW-DY!"
+    First: "Well, HOWWWWW-DY!"
     **  "WHAT KIN I DEW FER YEW FIIIIINE GENTLEMENNN?"
-    --  J: "...Probably a good stopping point."
+    --  First: "...Probably a good stopping point."
     **  "Yeah, sorry.["] How can I help you?"
-        J: "That's okay, I'm just tired. Do you have any rooms left?"
+        First: "That's okay, I'm just tired. Do you have any rooms left?"
 *   "Hi, welcome!"
-    J: "Hi, thanks!"
+    First: "Hi, thanks!"
     **  "How can I help you?"
-        J: "Are there any rooms left? We are beat."
+        First: "Are there any rooms left? We are beat."
 -
 *   "We sure do!"
--   J: "Good! One room please."
+-   First: "Good! One room please."
 -   -> place_in_room("guys") ->
 "Where are you guys headed?"
--   D: "Haha, Good question. We're not really sure."
+-   Second: "Haha, Good question. We're not really sure."
 *   "Are you running away from home?"
--   J: "No... My friend here is getting married next month, and we've been best friends since college. We don't have much of a plan, but we decided to drive across the country before I lose him forever."
+-   First: "No... My friend here is getting married next month, and we've been best friends since college. We don't have much of a plan, but we decided to drive across the country before I lose him forever."
 *   "Oh my..."
--   D: "We'll still be friends, man."
-J: "......"
+-   Second: "We'll still be friends, man."
+First: "..."
 *   "Well, I know you guys are tired.["] Why don't you guys get some sleep, and in the morning give me a ring. If I'm still here, I'll recommend a good place for breakfast. If I'm not, I'll leave a note for the next person."
--   J: "That sounds good. Thanks!"
-D: "Yeah, thanks!"
+-   First: "That sounds good. Thanks!"
+Second: "Yeah, thanks!"
 *   "You bet!"
--   \ (D + J start to leave)
-D: "Our room has two beds, right?"
-*   "I thought you were best friends...["](laughs) Yes, separate beds.
--   D: "Cool, thanks."
-
-(D + J exit)
-
+-   The two men start to leave the counter.
+Second: "Our room has two beds, right?"
+*   "I thought you were best friends...["]Haha! Yes, two beds.
+-   Second: "Cool, thanks."
+The two men leave the counter and head down the hall.
 *   "Nice guys."
 -
 
 // Chapter 5
-(11:30PM)
+\---
+11:30PM
 
-(bell chimes. Woman dressed in all black enters. Early 40s?)
+The door bell chimes as a woman dressed in all black, early forties, enters.
 
 *   "Welcome!"
 -   "Hello..."
@@ -264,53 +262,52 @@ D: "Our room has two beds, right?"
 -   "I'd just like a room."
 *   "Certainly!"
 -   -> place_in_room("mother") ->
-(heavy sigh)
-*   [Ignore sigh and hand over key] "Well, here's your key!"
+The woman sighs heavily.
+*   "Well, here's your key!"
     "Thanks."
     **  "Let me know if there's anything else you need!"
     "Thanks."
-    -- \ (G leaves)
+    -- The woman leaves the counter and heads to her room.
 *   "Are you sure that you're ok?"
-    "...Yeah---" (crying)
-    (Desk Phone Rings)
-    **  [Answer the phone] "Yes?"
+    "...Yeah-" The woman starts crying, and then the desk phone rings
+    **  [Answer the phone.] "Yes?"
         --- -> answer_phone_while_talking_to_grieving_mother ->
-    **  [Ignore the phone]
-        (crying)
+    **  [Ignore the phone.]
+        The woman continues to cry.
         *** "I..."
-        *** [Say nothing]
-        --- \ (crying)
+        *** [Say nothing] "..."
+        --- The woman continues to cry.
         *** "...Did you lose someone?"
         --- "Yes. I did."
         *** "I'm sorry.["] I lost someone recently as well."
-        --- \ (crying)
+        --- The woman continues to cry.
         *** "No use trying to change what we can't change.	"
-            (crying) "...I'm really tired. Can I have my key?"
-            ****    "Sure!" [Hand over key]
-            ----    \ (G leaves)
+            The woman continues to cry "...I'm really tired. Can I have my key?"
+            ****    "Sure!"
+            ----    The woman leaves the counter and heads to her room.
             ****    "Whoops."
             ----
         *** "What was this person's name?
-			(crying) "...D-David."
-			****    "Tell me about David"
-			----    "...W-well, D-david---" (Phone rings)
-			****    [Answer the phone] "I'm so sorry. This must be important."
+			The woman continues to cry. "...D-David."
+			****    "Tell me about David."
+			----    "...W-well, D-david-" The desk phone rings again.
+			****    [Answer the phone.] "I'm so sorry. This must be important."
 			        -----   -> answer_phone_while_talking_to_grieving_mother ->
-			****    [Ignore the phone again] "That can wait. Please continue."
-			        "W-well...David was the best thing that could ever happen to me. He never hurt anyone. It should have been me who died---" (crying)
+			****    [Ignore the phone again.] "That can wait. Please continue."
+			        "W-well...David was the best thing that could ever happen to me. He never hurt anyone. It should have been me who died-" The woman continues to cry.
 			        *****   "Was David your son?"
-			                (crying) (nods)
+			                The woman nods as she cries.
 			                ******  "Geez. That's so hard."
 			                ------
 			        *****   "Was David your husband?"
 			                "No...son."
 			                ******  "I'm sorry."
 			                ------
-			        *****   [Say nothing] "..."
+			        *****   [Say nothing.] "..."
 			        -----
-			        (crying) "...I haven't slept in 3 days."
+			        The woman continues to cry. "...I haven't slept in 3 days."
                     *****   "Well it sounds like you're overdue for some good rest then!"
-                    -----   "Haha...Yeah, hopefully" (crying)
+                    -----   "Haha...Yeah, hopefully." The woman continues to cry.
                     {
                         - treat_policeman_with_tact:
                             -> police_interrupts_grieving_mother ->
@@ -318,25 +315,24 @@ D: "Our room has two beds, right?"
                             -> grieving_mother_describes_son ->
                     }
 -   {treat_policeman_with_tact: -> give_police_directory ->}
-
 // Chapter 6
+\---
 1AM
-
-(phone rings)
-*   [Answer phone] "Moonview Motel front desk."
+The desk phone rings.
+*   [Answer the phone.] "Moonview Motel front desk."
 -   "Sorry to bother you. There’s been an accident..."
-*   "......I’m sorry, who is this?"
+*   "...I’m sorry, who is this?"
 -   "This is a very embarrassed father."
 *   "I don’t follow..."
-    "(laughs) I didn’t mean to confuse you. These are your friends in room {get_room_number_by_occupant("family")}.
-    **  "...Ohh...[](laughs) Accident?
+    "Haha. I didn’t mean to confuse you. This is your friends in room {get_room_number_by_occupant("family")}.
+    **  "...Ohh...[]Haha. Accident?
     --  "Yeah...without
 *   "Accident?"
     "Yeah, there’s been a leak."
     **  "A leak? Who is this?"
-    --  (laughs) Sorry, should’ve prefaced with that. It’s the family in room {get_room_number_by_occupant("family")}. Without
+    --  "Haha. Sorry, should’ve prefaced with that. It’s the family in room {get_room_number_by_occupant("family")}. Without
 -   <> going into specifics, we’re going to need a new cot.
-*   "..." (stifled laughter)[] "Oh dear. Of course. How is the little guy?
+*   [Stifle laughter.]Tracy stifles her laughter. "...Oh dear. Of course. How is the little guy?
 -   "He’s ok. A little embarrassed. A little wet. Wife is about to give him a bath."
 *   "Good...good."
 -   "Well, I hate to bug you so late in the evening, but what’s the best way to get that cot? I can come grab it, or if it’s better for you to send it here that works too.
@@ -351,8 +347,8 @@ D: "Our room has two beds, right?"
     ** [Hang up and dial {maintenance_guy_name}] "Hey...Pete? Did I wake you? ...Good. I need a favor.
     --
 *   "On second thought, I don’t think I want to give you the cot."
-    (awkward laugh) "Good one!"
-    **  [Say nothing]
+    "Hehe...Good one!"
+    **  [Say nothing] "..."
     --  "So is it better if I come pick it up now?"
     **  "No. I’m serious. You can’t have the cot."
     --  "...I’m going to come to lobby."
@@ -374,20 +370,20 @@ D: "Our room has two beds, right?"
             ****    "Seems like I just did."
             ----    "...Well it seems like we’d better leave."
             ****    "Sounds good to me."
-            ----    "...Unbelievable. My wife even raved on how good she thought you were at your job...Whatever is eating at you, I hope you sort it out. (exits. family pack up their car and drives off)
+            ----    "...Unbelievable. My wife even raved on how good she thought you were at your job...Whatever is eating at you, I hope you sort it out. The father heads back to his room. Shortly after the whole family returns, exits the lobby, packs up their car, and drives away.
+            // TODO: ask john why tracy would behave like this. Seems like she knows the family is in danger.
             ****    "That wasn’t easy."
             ----
         *** "Well, I guess you were wrong."
-            "I guess so." (exits)
+            "I guess so." The father heads back to his room.
 
     **  "Sure sorry. I’ll have Pete send it soon."
-        "It’s ok. Thank you."
+        "It’s ok. Good night."
 -
-
 // Chapter 7
+\---
 2AM
-
-({policeman_name} enters)
+{policeman_name} enters the lobby.
 *   {treat_policeman_with_tact} Hi, Rick!
     "Hello...Everything ok? Any trouble from our friend Charlie?"
     **  "No, he’s been fine!["] How’s that background check coming?"
@@ -398,8 +394,8 @@ D: "Our room has two beds, right?"
     --  "You bet. Hopefully last night was the last of it."
     **  "Hopefully."
     --  "Still, please remember to NOT go outside if you hear anything strange. And call me."
-    **  "Stay put...Call you...Got it."
-    --  \ (smiles) "That’s my girl. I’ll be back soon." (leaves)
+    **  "Stay put. Call you. Got it."
+    --  {policeman_name} smiles. "That’s my girl. I’ll be back soon." {policeman_name} leaves.
 *   {not treat_policeman_with_tact} Hi, Rick!
     "Hey {player_character_name}...Everything ok?"
     **  "It is! Thanks for coming back!"
@@ -408,115 +404,111 @@ D: "Our room has two beds, right?"
     --  "OK. Well, good...I need a favor."
     **  "What’s up?"
     --  "I need your records for the night. I think it would be wise to run checks on everyone here."
-    **  "You don’t think[..."]---"
+    **  "You don’t think[..."]-"
     --  "No, I don’t think the killer is here. But this would be a wise precaution."
     **  "Yes. I agree."
     --
     **  [Hand over directory] "Here you go."
     --  "Thanks. I’ll make these background checks top priority, should be done in a couple hours. We’ll talk soon.
     **  {not family_leaves} "Ok, thanks!"
-        ({policeman_name} leaves)
+        {policeman_name} leaves.
     **  {family_leaves} "Ok, thanks!"
-        ({policeman_name} starts to leave)
-        "...Hey, {player_character_name}?"
+        {policeman_name} starts to leave. "...Hey, {player_character_name}?"
         ***  "Yes?"
         --- "Why did you cross off room {get_room_number_by_occupant("family")}?
         *** "Oh...Well..."
         ---
-        *** [Tell the truth] "I panicked. They were a nice family, and I guess my fear of what could happen got the better of me."
+        *** [Tell the truth.] "I panicked. They were a nice family, and I guess my fear of what could happen got the better of me."
             "Because of the murders?"
-            ****    [Nod]
+            ****    [Nod.] "Mm-hmm"
             ----    "I see...Probably shouldn’t have done that."
             ****    "...why?"
             ----    "I just think you’re overreacting a bit, that’s all."
             ****    "Oh..."
             ----    "We’ll, I’d better run these checks."
             ****    "Ok, see you soon."
-            ----    ({policeman_name} leaves)
-        *** [Lie] "They called around midnight. Said there was a family emergency. Packed up their car and were gone within minutes."
+            ----    {policeman_name} leaves.
+        *** [Lie.] "They called around midnight. Said there was a family emergency. Packed up their car and were gone within minutes."
             "Well, that’s too bad."
             ****    "Hm?"
             ----    "About the family emergency, I mean."
             ****    "Oh. Right."
             ----    "Well, I’d better run these checks. We’ll be in touch."
             ****    "Sounds good. Thanks."
-            ----    ({policeman_name} leaves)
-
-// Chapter 8
-3AM
-
-(bell rings and young man walks in)
-*   "Hello and welcome to the Moonview Motel!"
--   \ (young man mutters something under his breath)
-*   [Ignore muttering]
-*   "I'm sorry?"
-    "Nothing"
+            ----    {policeman_name} leaves.
 -
-*   "How can I help you?"
+// Chapter 8
+\---
+3AM
+Lobby doors ding as a young man walks in.
+*   "Hello and welcome to the Moonview Motel!"
+-   The young man mutters something under his breath.
+*   (ignore_muttering) [Ignore muttering.] -> young_man_how_can_help_you
+*   "I'm sorry?"
+-   "Nothing"
+*   (young_man_how_can_help_you) "How can I help you?"
 -   "A room. The sooner the better."
 -> place_in_room("young_man") ->
 "Of course! You look a little tired."
-(young man mutters something under his breath again)
+The young man mutters something under his breath again.
 *   "Come again?"
--   \ (young man doesn’t respond)
+-   "-"
 *   "Did you say something?"
--   "I said, 'THAT’S NONE OF YOUR BUSINESS'"
-*   [Be harsh] "What’s your name?"
+-   "I said, THAT’S NONE OF YOUR BUSINESS"
+*   [Be harsh.] "What’s your name?"
     "Huh?"
     **  "WHAT’S YOUR NAME?"
     --  "T-Thomas..."
-    **  "Well, T-Thomas...["] This information might be shocking and brand new to you, but you aren’t the only one having a bad night. (pause) I’ve been dealing with the police, a possible killer on the loose, a drunk classmate who should PROBABLY be in jail right now, and a maintenance guy who is treating me like his helpless, 8 year old daughter all because I asked him to 'check on me once or twice'. (pause) On top of that, I’ll have worked for 14 hours today. I had to take a second job washing dishes just to pay rent, and it’s another 14 hour day tomorrow. (pause) I get that a few of us aren't where we want to be. But DON’T throw that anger on someone else. It’s hard enough already for them. (Pause) Here is your key, Thomas. Get some sleep.
-    --  "..." (Thomes leaves)
-*   [Be real] "Why are you talking to me like this?"
+    **  "Well, T-Thomas...["] This information might be shocking and brand new to you, but you aren’t the only one having a bad night. I’ve been dealing with the police, a possible killer on the loose, a drunk classmate who should PROBABLY be in jail right now, and a maintenance guy who is treating me like his helpless, 8 year old daughter all because I asked him to 'check on me once or twice'. On top of that, I’ll have worked for 14 hours today. I had to take a second job washing dishes just to pay rent, and it’s another 14 hour day tomorrow. I get that a few of us aren't where we want to be. But DON’T throw that anger on someone else. It’s hard enough already for them. Here is your key, Thomas. Get some sleep.
+    --  "..." Thomes leaves.
+*   (young_man_get_to_open_up) [Be real.] "Why are you talking to me like this?"
     "Like what?"
     **  "I think you know exactly what I’m talking about.["] I want to make your visit as cozy as possible, and I have tried to do nothing but that since the moment you walked in.
-    --  \ (young man says nothing)
+    --  "..."
     **  "What’s your name?"
     --  "...Thomas."
     **  "Hello, Thomas.["] I’m {player_character_name}."
     --  "Hi..."
     **  "What’s on your mind, Thomas?"
-    --  "Well..."
-    (Thomas tells a sad story. Thomas had one real friend in the entire city – his roommate. His friend was soft and ate a lot of Thomas’s anger. Unfortunately, Thomas never got the help he needed and T’s anger became too much for his friend. His friend kicked T out and hasn’t talked to him since)
+    --  "Well..." Thomas tells a sad story. Thomas had one real friend in the entire city – his roommate. His friend was soft and ate a lot of Thomas’s anger. Unfortunately, Thomas never got the help he needed and Thomas’s anger became too much for his friend. His friend kicked Thomas out and hasn’t talked to him since.
     **  "I’m sorry, Thomas."
-    --  \ (Thomas says nothing)
-    **  "I think your friend still cares about you, but it sounds like he needs some time to sort things out. Without you. ...Do you think it would be wise to get some help in the meantime?
+    --  "..."
+    **  "I think your friend still cares about you[."], but it sounds like he needs some time to sort things out. Without you. ...Do you think it would be wise to get some help in the meantime?
     --  "...Yeah. Maybe so."
     **  "Is there anyone you can stay with in the meantime?["] Hotel life can be expensive."
     --  "Maybe. A lot of people wouldn’t put up with me like my friend did. ...I may need to change a few things. ...Thanks."
-    **  [Smile] "My pleasure."
+    **  [Smile.] "My pleasure."
     --  "..."
     **  "Well, you’re welcome at the Moonview Motel anytime.["] And since this night's halfway over, I’ll only charge you half-price for the night. Sound fair?
-    --  "Yeah. (smiles) That sounds fair."
+    --  "Yeah." Thomas smiles. "That sounds fair."
     **  "Have a good night[."], Thomas. Get some rest. Don’t hesitate to call if you need anything.
-    --  \ (Thomas leaves)
-
+    --  Thomas leaves.
+-
 // Chapter 9
-
+\---
 4AM
-(Front desk)
-(Bell rings)
+{policeman_name} enters the lobby.
 
-* "Hi, Rick!"
-- "Hello." (pause)
-* Is everything ok?
-- \ (sighs) "I hope so, but it might not be."
+* "Hi, {policeman_personally_preferred_name}!"
+- "Hello."
+* "...Is everything ok?"
+- {policeman_name} sighs. "I hope so, but it might not be."
 * "What’s wrong?["] Are we in danger?"
 - "No, no... I think we’ll be ok. But I think I may have made a pretty big mistake."
 * "Oh?"
 - "Well, I ran those background checks like I said I would. And they turned out mostly ok."
-* "Good!["] (pause) "Mostly"?"
+* "Mostly?"
 - "As it turns out, three years ago a case went unsolved. A woman was inside her house one night when a stranger broke in. She claimed he attacked her and even tried to strangle her. Luckily for her, a neighbor was walking by at just the right time and heard her screaming. Before the murder could happen, the neighbor kicked down the door. By the time he reached the kitchen, the intruder had bolted out the back door and was well into the woods."
 * "Who was the intruder?"
-- "We don’t know for sure, but the woman’s description was a near perfect match of..." (pause)
-* "Of?"
+- "We don’t know for sure, but the woman’s description was a near perfect match of..."
+* "...Of?"
 - "Charlie."
 * "No["]..."
 - "I'm afraid so."
 * "Why wasn’t he arrested?"
 - "We brought him in for questioning, but he denied all charges. His friend gave a solid alibi, and we just didn’t have any proof. And I believed him, too. Just like that. On top of all of this, the victim was a drug addict with a much worse record than him. It was her word against his, and she had previously lied in court on two separate occasions."
 * "So[..."], you think Charlie killed these people last night?"
-- "I don’t know. But I’m damn certain he won’t be staying here another minute. (pause) Sorry to put you through all this."
+- "I don’t know. But I’m damn certain he won’t be staying here another minute. Sorry to put you through all this."
 
 
 -> END
